@@ -24,7 +24,12 @@ class Scraper
     media = profile.css(".vitals-container")
     media_hash = {}
     n = 0
+<<<<<<< HEAD
     until media.css("a")[n] == nil
+=======
+    binding.pry
+    until media.css("a")[n]["href"] == nil
+>>>>>>> c4b6c4602882bab136e5902328b3e837c250af62
       a = media.css("a")[n]["href"]
       if a.include?("twitter")
         media_hash[:twitter] = a
@@ -32,6 +37,7 @@ class Scraper
         media_hash[:linkedin] = a
       elsif a.include?("github")
         media_hash[:github] = a
+<<<<<<< HEAD
       elsif a.include?("http:")
         media_hash[:blog] = a
       end
@@ -40,6 +46,13 @@ class Scraper
     end
     media_hash[:profile_quote] = profile.css(".profile-quote").text
     media_hash[:bio] = profile.css(".description-holder p").text
+=======
+      elsif a.include?("blog")
+        media_hash[:blog] = a
+      n += 1
+      end
+    end
+>>>>>>> c4b6c4602882bab136e5902328b3e837c250af62
     media_hash
   end
 
